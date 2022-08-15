@@ -5,6 +5,7 @@ server:
     include-message: always
     include-binding-errors: always
 spring:
+  sql.init.mode: always
   h2:
     console:
       enabled: true
