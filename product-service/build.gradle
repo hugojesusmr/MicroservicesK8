@@ -39,6 +39,7 @@ dependencyManagement {
 		mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
 	}
 }
+
 String dockerHubUsernameProperty = findProperty('dockerHubUsername')?: 'hugojesusmr'
 String imageName = "hugojesusmr/product-service:$version"
 
