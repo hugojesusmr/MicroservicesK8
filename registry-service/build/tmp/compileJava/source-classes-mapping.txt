@@ -1,0 +1,2 @@
+com/example/demo/RegistryServiceApplication.java
+ com.example.demo.RegistryServiceApplication

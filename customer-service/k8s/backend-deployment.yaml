@@ -1,0 +1,58 @@
+apiVersion: apps/v1
+kind: Deployment 
+metadata:
+  name: springboot-k8-customer
+  labels:
+    app: springboot-k8-customer
+spec:
+  selector:
+    matchLabels:
+      app: springboot-k8-customer
+  replicas: 2 
+  template:
+    metadata:
+      labels:
+        app: springboot-k8-customer
+    spec:
+      containers:
+      - name: springboot-k8-customer
+        image: hugojesusmr/springboot-k8-customer:1.0
+        ports:
+        - containerPort: 8083 
+        env:
+        - name: DB_HOST
+          valueFrom:
+            configMapKeyRef:
+              name: mysql-configmap
+              key: host        
+        - name: DB_NAME
+          valueFrom:
+            configMapKeyRef:
+              name: mysql-configmap
+              key: name                
+        - name: DB_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: mysql-secret
+              key: username
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mysql-secret
+              key: password
+---
+apiVersion: v1 
+kind: Service
+metadata: 
+  name: springboot-k8-customer-svc
+  labels:
+    app: springboot-k8-customer-svc
+spec:
+  selector:
+    app: springboot-k8-customer
+  ports:
+    - protocol: TCP
+      port: 8083 
+      targetPort: 8083 
+      nodePort: 30080
+  type: NodePort 
