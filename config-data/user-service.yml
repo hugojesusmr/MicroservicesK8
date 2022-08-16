@@ -1,5 +1,6 @@
+
 server:
-  port: 8003
+  port: 8006
   error:
     include-message: always
     include-binding-errors: always
@@ -8,7 +9,7 @@ spring:
     console:
       enabled: true
   datasource:
-    url: jdbc:h2:mem:customerDB;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    url: jdbc:h2:mem:userDB;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
     driverClassName: org.h2.Driver
     platform: h2
     username: sa
@@ -26,7 +27,7 @@ spring:
         format_sql: false
 logging:
   pattern:
-    console: "%d{yyyy-MM-dd HH:mm:ss} ${LOG_LEVEL_PATTERN:-%5p} %m%n"
+    console: "%d{yyyy-MM-dd HH:mm:ss} ${LOG_LEVEL_PATTERN:-%5p} %m%n"  
 eureka:
   client:
     serviceUrl:
@@ -39,4 +40,3 @@ management:
       exposure:
          include: "*"   
 
-      
