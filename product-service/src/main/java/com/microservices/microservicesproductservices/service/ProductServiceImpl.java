@@ -19,7 +19,7 @@ public class ProductServiceImpl implements ProductService {
         return productRepository.findAll();
     }
     @Override
-    public Product getProduct(Integer id) {
+    public Product getProduct(Long id) {
         return productRepository.findById(id).orElse(null);
     }
     @Override
@@ -46,7 +46,7 @@ public class ProductServiceImpl implements ProductService {
         return productRepository.findByCategory(category);
     }
     @Override
-    public Product updateStock(Integer id, Double quantity) {
+    public Product updateStock(Long id, Double quantity) {
         Product productDB = getProduct(id);
         if(productDB == null)
             return null;
@@ -55,7 +55,7 @@ public class ProductServiceImpl implements ProductService {
         return productRepository.save(productDB);
     }
     @Override
-    public Product deleteProduct(Integer id) {
+    public Product deleteProduct(Long id) {
         Product productDB = getProduct(id);
         if(productDB == null)
             return null;

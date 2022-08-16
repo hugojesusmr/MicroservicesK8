@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Main-Class: org.springframework.boot.loader.JarLauncher
-Start-Class: com.microservices.microservicesproductservices.Microservice
- sproductservicesApplication
+Start-Class: com.microservices.microservicesproductservices.productServi
+ cesApplication
 Spring-Boot-Version: 2.7.2
 Spring-Boot-Classes: BOOT-INF/classes/
 Spring-Boot-Lib: BOOT-INF/lib/

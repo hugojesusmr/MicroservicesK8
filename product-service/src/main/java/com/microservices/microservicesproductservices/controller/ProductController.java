@@ -20,14 +20,14 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 @RestController
-@RequestMapping(value = "/api/products")
+@RequestMapping(value = "/products")
 public class ProductController {
     @Autowired
     private ProductService productService;
 
     @GetMapping( produces = MediaType.APPLICATION_JSON_VALUE) 
     public ResponseEntity<?> listProduct(
-        @RequestParam(name = "categoryId", required = false) Integer categoryId){
+        @RequestParam(name = "categoryId", required = false) Long categoryId){
         List<Product> products = new ArrayList<>();
 
         if(categoryId == null){
@@ -43,7 +43,7 @@ public class ProductController {
     }
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<?> getProduct(@PathVariable Integer id){
+    public ResponseEntity<?> getProduct(@PathVariable Long id){
         Product product = productService.getProduct(id);
         if(product == null)
             return ResponseEntity.notFound().build();
@@ -60,7 +60,7 @@ public class ProductController {
     }
  
     @PutMapping(value = "/{id}")
-    public ResponseEntity<?> updateProduct(@PathVariable Integer id, @RequestBody Product product){
+    public ResponseEntity<?> updateProduct(@PathVariable Long id, @RequestBody Product product){
         product.setId(id);
         Product productDB = productService.updateProduct(product);
         if(productDB == null)
@@ -69,7 +69,7 @@ public class ProductController {
     }
 
     @DeleteMapping(value = "/{id}")
-    public ResponseEntity<?> deleteProduct(@PathVariable Integer id){
+    public ResponseEntity<?> deleteProduct(@PathVariable Long id){
         Product productDelete = productService.deleteProduct(id);
         if(productDelete == null)
             return ResponseEntity.notFound().build();
@@ -77,7 +77,7 @@ public class ProductController {
     }
 
     @GetMapping("/{id}/stock")
-    public ResponseEntity<?> updateStockProduct(@PathVariable Integer id, @RequestParam(name = "quantity", required = true) Double quantity){
+    public ResponseEntity<?> updateStockProduct(@PathVariable Long id, @RequestParam(name = "quantity", required = true) Double quantity){
         Product product = productService.updateStock(id, quantity);
 
         if(product == null)

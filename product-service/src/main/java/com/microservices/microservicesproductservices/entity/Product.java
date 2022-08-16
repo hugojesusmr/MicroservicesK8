@@ -24,7 +24,7 @@ import lombok.NoArgsConstructor;
 public class Product implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
     @NotEmpty(message = "El Nombre no debe estar vacio")
     private String name;
     @NotEmpty(message = "La descripcion no debe estar vacia")

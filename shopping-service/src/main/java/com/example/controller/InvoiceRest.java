@@ -6,8 +6,6 @@ import java.util.List;
 
 import javax.validation.Valid;
 
-import com.example.model.Customer;
-import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -47,7 +45,7 @@ public class InvoiceRest {
     }
 
     // -------------------Retrieve Single Invoice------------------------------------------
-    @CircuitBreaker(name="customerCB", fallbackMethod = "fallBackGetCustomer")
+    
     @GetMapping(value = "/{id}")
     public ResponseEntity<Invoice> getInvoice(@PathVariable("id") long id) {
         log.info("Fetching Invoice with id {}", id);
@@ -120,9 +118,5 @@ public class InvoiceRest {
             e.printStackTrace();
         }
         return jsonString;
-    }
-
-    private ResponseEntity<List<Customer>> fallBackGetCustomer(@PathVariable("id") long id, RuntimeException e){
-        return  new ResponseEntity("El cliente" + id + " No esta disponible", HttpStatus.OK);
     }
 }

@@ -6,7 +6,7 @@ import lombok.Data;
 
 @Data
 @Builder
-@Table(name="tbl_customers")
+@Table(name="tbl_customer")
 public class Customer{
 
 	private Long id;

@@ -5,7 +5,7 @@ import javax.persistence.Table;
 import lombok.Data;
 
 @Data
-@Table(name = "tbl_products")
+@Table(name = "tbl_product")
 public class Product {
 
 	private Long id;

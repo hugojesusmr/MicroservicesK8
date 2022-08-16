@@ -36,10 +36,9 @@ public class InvoiceServiceImpl implements InvoiceService {
         return  invoiceRepository.findAll();
     }
 
-
     @Override
     public Invoice createInvoice(Invoice invoice) {
-        Invoice invoiceDB = invoiceRepository.findByNumberInvoice ( invoice.getNumberInvoice () );
+        Invoice invoiceDB = invoiceRepository.findByNumberInvoice(invoice.getNumberInvoice());
         if (invoiceDB !=null){
             return  invoiceDB;
         }
@@ -53,7 +52,6 @@ public class InvoiceServiceImpl implements InvoiceService {
         });
         return invoiceDB;
     }
-
 
     @Override
     public Invoice updateInvoice(Invoice invoice) {
