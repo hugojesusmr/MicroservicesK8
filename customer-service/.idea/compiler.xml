@@ -10,7 +10,7 @@
         <module name="customer-service.main" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel target="18">
+    <bytecodeTargetLevel target="11">
       <module name="MicroServicioCustomerService.main" target="8" />
       <module name="MicroServicioCustomerService.test" target="8" />
     </bytecodeTargetLevel>
