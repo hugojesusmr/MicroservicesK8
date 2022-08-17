@@ -13,7 +13,6 @@ import lombok.NoArgsConstructor;
 @Data
 @Builder
 @Entity
-@Table(name = "tbl_category")
 public class Category implements Serializable{
     
     @Id
